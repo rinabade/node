@@ -2,7 +2,7 @@ const User = require('../models/user');
 const { Op } = require('sequelize');
 const {reqLogger, Logger} = require('../utils/logger-config');
 
-const register = async(req,res,next)=>{
+const register = async(req,res)=>{
     try {
         const { firstname, lastname, email, address, phone_number } = req.body;
     

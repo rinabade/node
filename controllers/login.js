@@ -30,7 +30,7 @@ const login = async(req,res)=>{
                 url : req.OriginalUrl,
                 payload : req.body
               });
-            return res.status(200).json({ message: 'Login successful' });
+            return res.status(201).json({ message: 'Login successful' });
         } 
         else {
             reqLogger("info", 'Invalid credentials', {
