@@ -20,17 +20,17 @@ const login = async(req,res)=>{
           return res.status(401).json({ error: 'Invalid credentials' });
         }
     
-        // Compare the provided password with the stored hashed password
+        // Compare password with the stored password
         const passwordMatch = await bcrypt.compare(password, user.password);
     
         // If passwords match, login is successful
         if (passwordMatch) {
-            reqLogger("info", 'Login successful', {
-                method : req.method,
-                url : req.OriginalUrl,
-                payload : req.body
-              });
-            return res.status(201).json({ message: 'Login successful' });
+          reqLogger("info", 'Login successful', {method : req.method, url : req.OriginalUrl, payload : req.body });
+
+          // generate token
+
+
+          return res.status(201).json({ message: 'Login successful' });
         } 
         else {
             reqLogger("info", 'Invalid credentials', {
