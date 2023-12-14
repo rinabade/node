@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userouter = require('./routes/router');
-require('dotenv').config();
 const {requestMiddleware,errorMiddleware} = require('./middleware/requestLogger')
 
 const app = express();
@@ -19,5 +18,5 @@ app.get('/', (req,res)=>{
 
 
 app.listen(process.env.PORT, (req,res,next)=>{
-    console.log(`App listening to the port: http://localhost:${process.env.PORT}`);
+    console.log(`App listening to the port: http://localhost:5000`);
 })
