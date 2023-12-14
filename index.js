@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const userouter = require('./routes/router');
-const {requestMiddleware,errorMiddleware} = require('./middleware/requestLogger')
+const {requestMiddleware,errorMiddleware} = require('./middleware/requestLogger');
+const sequelize = require('./utils/db-config');
 
 const app = express();
 
@@ -16,7 +17,10 @@ app.get('/', (req,res)=>{
     res.send("Hello World");
 })
 
-
-app.listen(process.env.PORT, (req,res,next)=>{
-    console.log(`App listening to the port: http://localhost:5000`);
-})
+sequelize
+    .sync()
+    .then(() =>{
+        app.listen(process.env.PORT, (req,res,next)=>{
+            console.log(`App listening to the port: http://localhost:5000`);
+        })
+    });
