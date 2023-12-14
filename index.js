@@ -2,10 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./routes/router');
 const {requestMiddleware,errorMiddleware} = require('./middleware/requestLogger');
-const sequelize = require('./utils/db-config');
-require('dotenv').config();
 
 const app = express();
+const port = 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -18,18 +17,8 @@ app.get('/', (req,res)=>{
     res.send("Hello World");
 })
 
-sequelize
-.sync()
-.then(() =>{
-    app.listen(process.env.PORT, ()=>{
-        console.log(`App listening to the port: http://localhost:${process.env.PORT}`);
-    })
+
+
+app.listen(port, ()=>{
+    console.log(`App listening to the port: http://localhost:${port}`);
 })
-.catch((error) =>{
-        console.log("error", `${error.message}`);
-    })
-
-
-// app.listen(process.env.PORT, ()=>{
-//     console.log(`App listening to the port: http://localhost:${process.env.PORT}`);
-// })
