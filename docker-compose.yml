@@ -1,0 +1,43 @@
+services:
+
+  # node-service
+  node_app:
+    build: .
+    container_name: nodeApp
+    ports:
+      - 8000:8000
+    environment:
+      - PG_DB=myDatabase
+      - PG_USER=myUser
+      - PG_PASSWORD=myPassword
+      - PG_HOST=postgres
+    depends_on:
+      - postgres_db
+    volumes:
+      - ./:/app/data
+    networks:
+      - myNetwork
+  
+
+  # postgres-service
+  postgres_db:
+    image: "postgres:15-alpine"
+    container_name: postgresDB
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_DB=myDatabase
+      - POSTGRES_USER=myUser
+      - POSTGRES_PASSWORD=myPassword
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - myNetwork
+
+volumes:
+  postgres: {}
+
+networks:
+  myNetwork:
+    driver: bridge
+    
