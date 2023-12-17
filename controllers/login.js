@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const {User} = require('../models/user');
 const {reqLogger, Logger} = require('../utils/logger-config');
 
 const login = async(req,res)=>{

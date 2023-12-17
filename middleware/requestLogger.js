@@ -21,7 +21,7 @@ const requestMiddleware = async (req,res,next) =>{
 
 const errorMiddleware = async (req,res,next) =>{
     try {
-        Logger("info", "Sending Request",{
+        Logger("info", "Incoming Request",{
             method: req.method,
             url: req.OriginalUrl,
             payload: req.params

@@ -12,7 +12,7 @@ const reqLogger = (level, message, {method, url, payload}) => {
             winston.format.colorize()
         ),
         defaultMeta : {
-            service : User-Information-Record
+            service : "User-Information-Record"
         },
         transports: [
             new winston.transports.Console()
@@ -39,7 +39,7 @@ const Logger = (level, message) => {
             winston.format.colorize(),            
         ),
         defaultMeta:{
-            service : User-Information-Record
+            service : "User-Information-Record"
         },
         transports: [
             new winston.transports.Console()

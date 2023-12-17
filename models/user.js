@@ -33,4 +33,4 @@ const User = sequelize.define('user_details', {
 User.removeAttribute('id');
 
 
-module.exports = User;
+module.exports = {User};

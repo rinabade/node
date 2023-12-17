@@ -8,6 +8,7 @@ const port = 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
+
 app.use('/users', router);
 
 app.use(requestMiddleware);
@@ -16,7 +17,6 @@ app.use(errorMiddleware);
 app.get('/', (req,res)=>{
     res.send("Hello World");
 })
-
 
 
 app.listen(port, ()=>{
